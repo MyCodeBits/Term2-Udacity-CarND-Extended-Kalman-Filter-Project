@@ -12,7 +12,7 @@ public:
     // state covariance matrix
     Eigen::MatrixXd P_;
 
-    // state transition matrix
+    // state transistion matrix
     Eigen::MatrixXd F_;
 
     // process covariance matrix
