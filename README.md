@@ -85,4 +85,4 @@ Starting with Udacity's ["Extended kalman filter" starter code](https://github.c
 
 ![alt text][image4]
 
-The outputs for estimation is in the [output.txt](.outputs/output.txt) file.
+The outputs for estimation is in the [output.txt](https://github.com/MyCodeBits/Term2-Udacity-CarND-Extended-Kalman-Filter-Project/blob/master/outputs/output.txt) file.
