@@ -70,7 +70,7 @@ Starting with Udacity's ["Extended kalman filter" starter code](https://github.c
   4. called update step for either the lidar or radar sensor measurement. Because the update step for lidar and radar are slightly different, there are different functions for updating lidar and radar.
 - **kalman_filter.cpp :** added the code to to implement the **prediction** and **update** equations.
 - **tools.cpp :** Implemented functions to calculate **root mean squared error** and the **Jacobian matrix**.
-- **output_images :** Output images captured from the run using simulator.
+- **outputs :** Output images and output text file captured from the run using simulator.
 
 
 **Outputs**
