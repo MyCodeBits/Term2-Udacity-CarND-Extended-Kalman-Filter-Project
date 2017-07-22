@@ -25,7 +25,6 @@ void KalmanFilter::Predict() {
 
 void KalmanFilter::Update(const VectorXd &z) {
     // update the state by using Kalman Filter equations
-
     // measurement update
     VectorXd z_pred = H_ * x_;
     VectorXd y = z - z_pred;
@@ -42,7 +41,6 @@ void KalmanFilter::Update(const VectorXd &z) {
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
     // update the state by using Extended Kalman Filter equations
-
     // get components of predicted state
     float px = x_(0);
     float py = x_(1);
