@@ -31,30 +31,34 @@ FusionEKF::FusionEKF() {
             0, 0.0009, 0,
             0, 0, 0.09;
 
+    /*
+     * Initialize the FusionEKF.
+     * Set the process and measurement noises
+     */
     // measurement function matrix - laser
     H_laser_ << 1, 0, 0, 0,
-            0, 1, 0, 0;
+                0, 1, 0, 0;
 
     //state covariance matrix: low values for high certainity
     MatrixXd P_ = MatrixXd(4, 4);
     P_ << 1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1000, 0,
-            0, 0, 0, 1000;
+          0, 1, 0, 0,
+          0, 0, 1000, 0,
+          0, 0, 0, 1000;
 
     // state transition matrix
     MatrixXd F_ = MatrixXd(4, 4);
     F_ << 1, 0, 1, 0,
-            0, 1, 0, 1,
-            0, 0, 1, 0,
-            0, 0, 0, 1;
+          0, 1, 0, 1,
+          0, 0, 1, 0,
+          0, 0, 0, 1;
 
     // new covariance matrix based on noise vector
     MatrixXd Q_ = MatrixXd(4, 4);
     Q_ << 1, 0, 1, 0,
-            0, 1, 0, 1,
-            1, 0, 1, 0,
-            0, 1, 0, 1;
+          0, 1, 0, 1,
+          1, 0, 1, 0,
+          0, 1, 0, 1;
 
     VectorXd x_ = VectorXd(4);
     x_ << 1, 1, 1, 1;
@@ -74,7 +78,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      ****************************************************************************/
     if (!is_initialized_) {
         /**
-        TODO:
           * Initialize the state ekf_.x_ with the first measurement.
           * Create the covariance matrix.
           * Remember: you'll need to convert radar from polar to cartesian coordinates.
@@ -116,7 +119,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      ****************************************************************************/
 
     /**
-     TODO:
        * Update the state transition matrix F according to the new elapsed time.
         - Time is measured in seconds.
        * Update the process noise covariance matrix.
@@ -138,9 +140,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     //set the process covariance matrix Q
     ekf_.Q_ = MatrixXd(4, 4);
     ekf_.Q_ << dt_4 * noise_ax, 0, dt_3 * noise_ax, 0,
-            0, dt_4 * noise_ay, 0, dt_3 * noise_ay,
-            dt_3 * noise_ax, 0, dt_2 * noise_ax, 0,
-            0, dt_3 * noise_ay, 0, dt_2 * noise_ay;
+               0, dt_4 * noise_ay, 0, dt_3 * noise_ay,
+               dt_3 * noise_ax, 0, dt_2 * noise_ax, 0,
+               0, dt_3 * noise_ay, 0, dt_2 * noise_ay;
 
     ekf_.Predict();
 
